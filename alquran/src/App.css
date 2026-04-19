@@ -1,0 +1,271 @@
+/* ===== RESET ===== */
+/* Bagian ini mereset gaya default browser untuk konsistensi */
+/* Menerapkan box-sizing border-box ke semua elemen (termasuk pseudo-elements ::before dan ::after) */
+/* Agar padding dan border dihitung dalam lebar/tinggi elemen, bukan di luar */
+*,
+*::before,
+*::after {
+  box-sizing: border-box; /* Menggunakan model box yang lebih prediktif, menghindari overflow tak terduga */
+  margin: 0; /* Menghapus margin default (misalnya, dari body atau p) untuk layout bersih */
+  padding: 0; /* Menghapus padding default untuk kontrol penuh */
+}
+
+/* Styling khusus untuk html dan body sebagai root elemen */
+/* Memastikan layout penuh tinggi dan tema gelap konsisten */
+html, body {
+  height: 100%; /* Tinggi 100% viewport agar aplikasi memenuhi layar penuh, cocok untuk tema gelap */
+  overflow-x: hidden; /* Mencegah scroll horizontal yang tidak diinginkan, fokus pada konten vertikal */
+  font-family: "Poppins", sans-serif; /* Font modern dan readable, diimpor dari Google Fonts (asumsi) untuk estetika */
+  background: radial-gradient(circle at top, #0f172a, #050f39); /* Gradien radial dari biru gelap ke hitam, menciptakan efek langit malam untuk tema Quran */
+  color: #fafafa; /* Warna teks default putih (#fafafa adalah off-white), kontras dengan background gelap */
+}
+
+/* ===== CONTAINER ===== */
+/* Container utama untuk membatasi lebar dan center konten */
+/* Mencegah konten terlalu lebar di layar besar, responsif */
+.container {
+  max-width: 1100px; /* Batas lebar maksimal 1100px, ideal untuk desktop; di mobile akan shrink */
+  margin: auto; /* Auto margin kiri-kanan untuk centering horizontal */
+  padding: 30px 20px; /* Padding 30px atas/bawah, 20px kiri/kanan; memberikan ruang bernapas di dalam container */
+}
+
+/* ===== TITLE ===== */
+/* Styling untuk judul utama h1 di halaman list */
+/* Membuat judul menonjol sebagai header aplikasi */
+h1 {
+  text-align: center; /* Center teks untuk simetri */
+  font-weight: 600; /* Semi-bold, cukup tebal tanpa terlalu heavy */
+  color: #90deff; /* Biru muda (#90deff), kontras dengan background, mewakili tema air/langit */
+  margin: 20px 0; /* Margin 60px atas/bawah untuk spasi besar dari elemen lain, 0 kiri/kanan */
+  letter-spacing: 4px; /* Spasi huruf 4px untuk efek "spacious" dan modern */
+}
+
+/* ===== SEARCH ===== */
+/* Input pencarian di halaman list surah */
+/* Desain input yang clean dan fokus pada usability */
+.search {
+  width: 100%; /* Lebar penuh container untuk kemudahan akses */
+  padding: 14px 18px; /* Padding dalam: 14px atas/bawah, 18px kiri/kanan; cukup untuk teks dan jari */
+  border-radius: 14px; /* Sudut bulat 14px untuk estetika lembut, konsisten dengan tema */
+  margin-bottom: 30px; /* Margin bawah 30px untuk jarak dari grid di bawahnya */
+  background: #ffffff; /* Background putih penuh untuk kontras dengan teks hitam, mudah dibaca */
+  color: #000; /* Teks hitam untuk readability tinggi */
+  font-size: 14px; /* Ukuran font sedang, balance antara besar dan kompak */
+  border: none; /* Tanpa border untuk desain minimalis */
+  outline: none; /* Tanpa outline default browser saat focus, agar clean */
+}
+
+/* ===== GRID ===== */
+/* Layout grid untuk daftar kartu surah */
+/* Responsif dan fleksibel untuk berbagai ukuran layar */
+.grid {
+  display: grid; /* Menggunakan CSS Grid untuk layout 2D yang powerful */
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Kolom otomatis: min 250px per kolom, fr untuk distribusi ruang; responsif (lebih banyak kolom di layar besar) */
+  gap: 25px; /* Jarak 25px antar kartu untuk ruang bernapas */
+}
+
+/* ===== CARD ===== */
+/* Kartu untuk setiap surah di grid */
+/* Interaktif dengan hover untuk feedback user */
+.card {
+  background: rgba(255, 255, 255, 0.02); /* Background putih sangat transparan (2%), efek glassmorphism pada tema gelap */
+  padding: 22px; /* Padding 22px untuk konten dalam kartu */
+  border-radius: 20px; /* Sudut bulat 20px untuk estetika modern */
+  cursor: pointer; /* Cursor pointer untuk indikasi klik */
+  transition: 0.25s ease; /* Transisi smooth 0.25s dengan easing ease untuk animasi halus */
+  border: 1px solid rgba(94, 202, 252, 0.4); /* Border biru transparan (40%), menambah depth tanpa terlalu mencolok */
+  text-align: center;
+}
+.card h3 {
+  color: #7dd3fc; /* Biru muda untuk judul surah, konsisten dengan tema */
+  font-size: 16px; /* Ukuran font sedang untuk judul */
+  margin-bottom: 8px; /* Margin bawah 8px untuk jarak dari nomor */
+}
+.card p {
+  color: #94a3b8; /* Abu-abu muda untuk nomor, lebih soft dari judul */
+  font-size: 14px; /* Ukuran font kecil untuk nomor, secondary */
+} 
+.card span {
+  color: #cbd5f5; /* Abu-abu lebih terang untuk nama Latin, paling soft */
+  font-size: 13px; /* Ukuran font kecil untuk nama Latin */
+} 
+
+.card:hover {
+  transform: translateY(-5px); /* Geser kartu 5px ke atas saat hover, efek "angkat" */
+  box-shadow: 0 0 20px rgba(125, 211, 252, 0.25); /* Shadow biru dengan blur 20px, menambah efek cahaya */
+}
+
+/* ===== HEADER ===== */
+/* Header di halaman detail surah */
+/* Struktur sederhana untuk info surah */
+.header {
+  text-align: center; /* Center untuk simetri */
+  margin-bottom: 20px; /* Margin bawah 20px untuk jarak dari ayat */
+}
+
+.header h2 {
+  color: #7dd3fc; /* Biru muda, konsisten dengan tema */
+  font-size: 18px; /* Ukuran sedang untuk sub-header */
+}
+
+.header p {
+  color: #cbd5f5; /* Abu-abu muda, lebih soft dari h2 */
+  font-size: 14px; /* Ukuran kecil untuk deskripsi */
+}
+
+/* Styling untuk deskripsi surah */
+.surah-desc {
+  color: #94a3b8; /* Warna abu-abu untuk deskripsi */
+  font-size: 13px; /* Ukuran lebih kecil */
+  margin: 10px 0; /* Margin atas/bawah */
+  line-height: 1.6; /* Tinggi baris untuk readability */
+}
+
+/* ===== BUTTON ===== */
+/* Container untuk center tombol back dan tafsir */
+.button-container {
+  display: flex; /* Flexbox untuk layout */
+  justify-content: center; /* Center horizontal */
+  gap: 15px; /* Jarak antar tombol */
+  margin-bottom: 20px; /* Margin bawah */
+}
+
+/* Tombol back dan tafsir-nav */
+/* Desain tombol yang menarik dengan gradien dan hover */
+.back, .tafsir-nav {
+  padding: 10px 16px; /* Padding 10px atas/bawah, 16px kiri/kanan; kompak tapi nyaman */
+  border-radius: 12px; /* Sudut bulat 12px untuk konsistensi */
+  background: linear-gradient(135deg, #59cdff, #0ea5e9); /* Gradien biru dari muda ke gelap, arah 135deg untuk efek 3D */
+  color: white; /* Teks putih untuk kontras */
+  cursor: pointer; /* Indikasi klik */
+  font-size: 13px; /* Ukuran font kecil untuk tombol */
+  border: none; /* Tanpa border untuk desain flat */
+  transition: 0.25s; /* Transisi untuk hover */
+}
+
+.back:hover, .tafsir-nav:hover {
+  transform: scale(1.05); /* Perbesar 5% saat hover untuk feedback */
+  box-shadow: 0 0 12px rgba(56, 189, 248, 0.5); /* Shadow biru dengan opacity 50% untuk efek glow */
+}
+
+/* ===== AYAT CARD ===== */
+/* Kartu untuk setiap ayat di detail */
+/* Mirip card tapi lebih ringan untuk konten panjang */
+.ayah-card {
+  background: rgba(255,255,255,0.04); /* Background lebih transparan (4%) dari card */
+  padding: 18px; /* Padding 18px untuk konten ayat */
+  border-radius: 16px; /* Sudut 16px, sedikit lebih kecil dari card */
+  margin-bottom: 16px; /* Margin bawah 16px untuk jarak antar ayat */
+  border: 1px solid rgba(125,211,252,0.15); /* Border tipis biru transparan (15%) untuk subtle separation */
+}
+
+/* ===== AYAT TEXT ===== */
+/* Styling teks ayat: Arab, Latin, Indonesia */
+/* Hierarki visual untuk readability */
+.arab {
+  font-size: 26px; /* Ukuran besar 26px untuk teks Arab, menonjol sebagai utama */
+  text-align: right; /* Rata kanan untuk bahasa Arab */
+  line-height: 1.9; /* Tinggi baris 1.9 untuk readability teks panjang */
+  margin-bottom: 10px; /* Margin bawah 10px untuk jarak dari Latin */
+}
+
+.latin {
+  font-size: 13px; /* Ukuran kecil 13px untuk transliterasi, secondary */
+  color: #94a3b8; /* Abu-abu, kurang menonjol dari Arab/Indonesia */
+}
+
+.indo {
+  font-size: 14px; /* Ukuran sedang 14px untuk terjemahan, balance */
+  margin-top: 5px; /* Margin atas 5px untuk jarak dari Latin */
+  color: #e2f3ff; /* Biru muda, lebih terang dari Latin untuk emphasis */
+}
+
+/* ===== AUDIO ===== */
+/* Player audio untuk ayat */
+/* Sederhana dan terintegrasi */
+.audio {
+  width: 100%; /* Lebar penuh kartu untuk kontrol mudah */
+  margin-top: 12px; /* Margin atas 12px dari teks Indonesia */
+  border-radius: 10px; /* Sudut 10px untuk konsistensi */
+  opacity: 0.9; /* Sedikit transparan untuk blend dengan background */
+}
+
+/* ===== TAFSIR HEADER ===== */
+/* Header di halaman tafsir */
+/* Mirip header detail tapi untuk tafsir */
+.tafsir-header {
+  text-align: center; /* Center */
+  margin-bottom: 25px; /* Margin bawah 25px */
+}
+
+.tafsir-header h2 {
+  color: #7dd3fc; /* Sama dengan header */
+}
+
+.tafsir-header p {
+  color: #94a3b8; /* Sama */
+  font-size: 14px; /* Sama */
+}
+
+.tafsir-header span {
+  font-size: 12px; /* Lebih kecil untuk info tambahan */
+  color: #38bdf8; /* Biru lebih terang */
+}
+
+/* ===== TAFSIR LIST ===== */
+/* Container dan item untuk list tafsir */
+/* Layout vertikal dengan efek hover */
+.tafsir-container {
+  display: flex; /* Flexbox untuk layout linier */
+  flex-direction: column; /* Vertikal */
+  gap: 12px; /* Jarak 12px antar item */
+}
+
+.tafsir-item {
+  display: flex; /* Flex untuk nomor dan teks sejajar */
+  gap: 14px; /* Jarak 14px antar elemen dalam item */
+  background: rgba(255,255,255,0.04); /* Background transparan */
+  padding: 16px; /* Padding 16px */
+  border-radius: 14px; /* Sudut 14px */
+  border: 1px solid rgba(125,211,252,0.15); /* Border tipis */
+  transition: 0.2s; /* Transisi cepat */
+}
+
+.tafsir-item:hover {
+  transform: translateY(-2px); /* Geser 2px atas */
+  box-shadow: 0 0 12px rgba(125,211,252,0.2); /* Shadow ringan */
+}
+
+/* ===== NOMOR AYAT ===== */
+/* Lingkaran nomor ayat di tafsir */
+/* Desain bulat untuk menonjol */
+.tafsir-number {
+  min-width: 34px; /* Lebar min 34px untuk konsistensi */
+  height: 34px; /* Tinggi 34px */
+  border-radius: 50%; /* Bulat penuh */
+  background: linear-gradient(135deg, #38bdf8, #0ea5e9); /* Gradien biru */
+  display: flex; /* Flex untuk center teks */
+  align-items: center; /* Center vertikal */
+  justify-content: center; /* Center horizontal */
+  font-size: 13px; /* Ukuran font kecil */
+  font-weight: bold; /* Tebal untuk readability */
+  color: white; /* Teks putih */
+}
+
+/* ===== TEXT ===== */
+/* Teks tafsir */
+/* Styling sederhana untuk readability */
+.tafsir-content p {
+  font-size: 14px; /* Ukuran standar */
+  line-height: 1.7; /* Tinggi baris untuk teks panjang */
+  color: #e2f3ff; /* Biru muda */
+}
+
+/* ===== LOADING ===== */
+/* Teks loading */
+/* Sederhana dan center */
+.loading {
+  text-align: center; /* Center */
+  margin-top: 50px; /* Margin atas besar untuk posisi tengah */
+  color: #7dd3fc; /* Biru */
+}
