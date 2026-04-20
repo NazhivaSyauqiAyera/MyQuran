@@ -33,7 +33,7 @@ export default function DetailSurah({ surah, goBack, openTafsir }) {
         
         {/* Audio untuk seluruh surah */}
         <audio controls className="audio">
-          <source src={data.audioFull["05"]} type="audio/mpeg" />
+          <source src={data.audioFull["5"]} type="audio/mpeg" />
         </audio>
       </div>
 

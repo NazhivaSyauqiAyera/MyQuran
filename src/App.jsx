@@ -1,6 +1,9 @@
 // Import hook useState dari React
 import { useState } from "react";
 
+// uts, import komponen profile
+import Profile from "./pages/profile";
+
 // Import komponen SurahList
 import SurahList from "./components/SurahList";
 
@@ -26,6 +29,10 @@ export default function App() {
     // Container utama
     <div className="container">
       <h1>My Quran</h1>
+        <div style={{ marginBottom: "20px" }}>
+           <button onClick={() => setPage("list")}>Home</button>
+           <button onClick={() => setPage("profile")}>Profile</button>
+         </div>
       {page === "list" && (
         <SurahList
           // Fungsi saat surah dipilih: set surah dan pindah ke detail
@@ -54,6 +61,12 @@ export default function App() {
           // Fungsi kembali ke detail
           goBack={() => setPage("detail")}
         />
+      )}
+
+      {page === "profile" && (
+        <Profile
+          goProfile={() => setPage("list")}
+        />    
       )}
     </div>
   );
